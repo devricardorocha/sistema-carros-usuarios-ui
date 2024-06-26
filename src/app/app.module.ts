@@ -10,7 +10,8 @@ import { AppService } from './app.service';
 import { UserDetailModule } from './user-detail/user-detail.module';
 import { SharedModule } from './shared/shared.module';
 import { TableModule } from 'primeng/table';
-import { SplitterModule } from 'primeng/splitter';
+import { PanelModule } from 'primeng/panel';
+import { AvatarModule } from 'primeng/avatar';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SplitterModule } from 'primeng/splitter';
     UserDetailModule,
     SharedModule,
     TableModule,
-    SplitterModule  
+    PanelModule,
+    AvatarModule 
   ],
   providers: [ AppService ],
   bootstrap: [ AppComponent ]

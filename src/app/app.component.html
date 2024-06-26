@@ -1,9 +1,10 @@
-<p-splitter 
-  [panelSizes]="[50,50]" 
-  styleClass="mb-5">
+<p-panel>
+  <ng-template pTemplate="header">
+    <h1>Sistema de gestão de Carros e Usuários</h1>
+  </ng-template>
   <ng-template pTemplate>
     <div>
-      <h1>Lista de Usuários</h1>
+      <h2>Lista de Usuários</h2>
       <p-table [value]="users" class="p-datatable-striped" selectionMode="single"
         (onRowSelect)="onSelectUser($event.data)">
         <ng-template pTemplate="header">
@@ -27,9 +28,4 @@
       </p-table>
     </div>
   </ng-template>
-  <ng-template pTemplate>
-    <div class="col flex align-items-center justify-content-center">
-      <app-user-detail [user]="selectedUser"></app-user-detail>
-    </div>
-  </ng-template>
-</p-splitter>
+</p-panel>

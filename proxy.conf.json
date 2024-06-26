@@ -1,0 +1,6 @@
+{
+    "/api/*": {
+        "target": "https://sistema-carros-usuarios-36f7a5a2f523.herokuapp.com",
+        "secure": false
+    }
+}

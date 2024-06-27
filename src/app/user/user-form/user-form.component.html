@@ -1,0 +1,61 @@
+<div>
+    <p-card styleClass="user-form" class="flex justify-content-center">
+      <h2>Novo usuário</h2>
+      <form [formGroup]="userForm" (ngSubmit)="createUser()" novalidate>
+        <div class="field">
+          <input type="text" pInputText placeholder="Nome" formControlName="firstName" />
+          <small class="p-error block" *ngIf="
+              userForm.get('firstName')?.invalid && userForm.get('firstName')?.dirty
+            ">
+            Nome é obrigatório</small>
+        </div>
+        <div class="field">
+          <input type="text" pInputText placeholder="Sobrenome" formControlName="lastName" />
+          <small class="p-error block" *ngIf="
+              userForm.get('lastName')?.invalid && userForm.get('lastName')?.dirty
+            ">
+            Sobrenome é obrigatório</small>
+        </div>
+        <div class="field">
+          <p-calendar [(ngModel)]="birthday" formControlName="birthday" dateFormat="dd/mm/yy" [showIcon]="true" inputId="icondisplay" [maxDate]="maxDate" placeholder="Data de nascimento" />
+          <small class="p-error block" *ngIf="
+              userForm.get('birthday')?.invalid && userForm.get('birthday')?.dirty
+            ">
+            Data de nascimento é obrigatória</small>
+        </div>
+        <div class="field">
+          <input type="email" pInputText placeholder="Email" formControlName="email" />
+          <small class="p-error block" *ngIf="
+              userForm.get('email')?.invalid && userForm.get('email')?.dirty
+            ">
+            Email é obrigatório</small>
+        </div>
+        <div class="field">
+          <input type="text" pInputText placeholder="Login" formControlName="login" />
+          <small class="p-error block" *ngIf="
+              userForm.get('login')?.invalid && userForm.get('login')?.dirty
+            ">
+            Login é obrigatório</small>
+        </div>
+        <div class="field">
+          <input type="text" pInputText placeholder="DDD + 9 ou 8 dígitos" formControlName="phone" />
+          <small class="p-error block" *ngIf="
+              userForm.get('phone')?.invalid && userForm.get('phone')?.dirty
+            ">
+            Telefone é obrigatório</small>
+        </div>
+        <div class="field">
+          <input type="password" pInputText placeholder="Digite de 6 à 10 dígitos (letras e números)" formControlName="password" />
+          <small class="p-error block" *ngIf="
+              userForm.get('password')?.invalid && userForm.get('password')?.dirty
+            ">
+            Senha é obrigatória</small>
+        </div>
+        <p-messages />
+        <div class="form-submit flex">
+          <button pButton type="submit" label="Salvar" [disabled]="userForm.invalid"></button>
+          <button pButton severity="danger" (click)="back()" label="Cancelar"></button>
+        </div>
+      </form>
+    </p-card>
+  </div>

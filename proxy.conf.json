@@ -1,6 +1,8 @@
 {
-    "/api/*": {
-        "target": "https://sistema-carros-usuarios-36f7a5a2f523.herokuapp.com",
-        "secure": false
+    "/api": {
+        // "target": "https://sistema-carros-usuarios-36f7a5a2f523.herokuapp.com",
+        "target": "http://localhost:8080",
+        "secure": false,
+        "changeOrigin": true
     }
 }

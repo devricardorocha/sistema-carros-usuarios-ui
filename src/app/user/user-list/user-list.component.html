@@ -1,8 +1,10 @@
 <div class="p-panel-content p-mt-4 p-shadow-2">
+    <p-toast />
     <div class="flex gap-3 mt-1">
         <button pButton (click)="addNewUser()" type="button" label="Novo Usuário" icon="pi pi-plus"
-            class="p-mb-3"></button>
-        <p-toast />
+            class="p-mb-3 btn-user"></button>
+        <button pButton (click)="goToUserArea()" type="button" label="Área do Usuário" icon="pi pi-user"
+            class="p-mb-3 btn-user p-button-success"></button>
         <h2 class="w-full">Lista de Usuários</h2>
     </div>
     <p-table [value]="users" class="p-datatable-striped" selectionMode="single"

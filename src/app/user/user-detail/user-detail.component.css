@@ -1,0 +1,26 @@
+.user-detail-card {
+    width: 100%;
+    margin: 20px auto;
+}
+
+.p-field {
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+label {
+    font-weight: bold;
+}
+
+.card-container {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .fixed-width-card {
+    width: 360px;
+  }
+  
+  .flexible-width-card {
+    flex: 1;
+  }

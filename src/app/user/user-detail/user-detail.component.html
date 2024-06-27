@@ -1,0 +1,33 @@
+<div class="card-container">
+    <p-card *ngIf="user" header="{{ user | fullName }}" subheader="{{ user.login }}" [style]="{ width: '360px' }">
+        <ng-template pTemplate="content" [style]="{ width: '360px' }">
+            <div class="p-field">
+                <label for="firstName">Nome: </label>
+                <span id="firstName">{{ user.firstName }}</span>
+            </div>
+            <div class="p-field">
+                <label for="lastName">Sobrenome: </label>
+                <span id="lastName">{{ user.lastName }}</span>
+            </div>
+            <div class="p-field">
+                <label for="birthday">Data de Nascimento: </label>
+                <span id="birthday">{{ user.birthday }}</span>
+            </div>
+            <div class="p-field">
+                <label for="email">Email: </label>
+                <span id="email">{{ user.email }}</span>
+            </div>
+            <div class="p-field">
+                <label for="login">Login: </label>
+                <span id="login">{{ user.login }}</span>
+            </div>
+            <div class="p-field">
+                <label for="phone">Telefone: </label>
+                <span id="phone">{{ user.phone! | phoneNumber }}</span>
+            </div>
+        </ng-template>
+    </p-card>
+    <p-card class="flexible-width-card">
+        Carros
+    </p-card>
+</div>

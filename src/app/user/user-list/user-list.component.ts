@@ -7,7 +7,7 @@ import { User } from '../../models/user.model';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  styleUrls: [ './user-list.component.css' ]
+  styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
 
@@ -19,7 +19,7 @@ export class UserListComponent implements OnInit {
     private userService: UserService,
     private confirmationService: ConfirmationService,
     private messageService: MessageService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getAllUsers();
@@ -31,7 +31,7 @@ export class UserListComponent implements OnInit {
       this.users = response.map(user => ({
         ...user, birthday: new Date(user.birthday!).toLocaleDateString('pt-BR')
       }));
-      
+
       if (this.users && this.users.length > 0)
         this.selectedUser = this.users[0];
     })
@@ -60,13 +60,17 @@ export class UserListComponent implements OnInit {
       message: 'A ação não poderá ser desfeita',
       header: 'Remover usuário?',
       icon: 'pi pi-exclamation-triangle',
-      acceptIcon:"none",
+      acceptIcon: "none",
       acceptLabel: "Sim",
-      rejectIcon:"none",
+      rejectIcon: "none",
       rejectLabel: "Não",
-      rejectButtonStyleClass:"p-button-text",
-      accept: () =>  this.delete(id)
-  });
+      rejectButtonStyleClass: "p-button-text",
+      accept: () => this.delete(id)
+    });
+  }
+
+  goToUserArea() {
+    this.router.navigate(['users/me']);
   }
 
 }

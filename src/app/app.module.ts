@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { PanelModule } from 'primeng/panel';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UserService } from './user/user.service';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
@@ -25,6 +25,9 @@ import { ToastModule } from 'primeng/toast';
 import { FullNamePipe } from './pipes/full-name.pipe';
 import { UserFormComponent } from './user/user-form/user-form.component';
 import { TooltipModule } from 'primeng/tooltip';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { LoginComponent } from './auth/login/login.component';
+import { SplitterModule } from 'primeng/splitter';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,8 @@ import { TooltipModule } from 'primeng/tooltip';
     PhoneNumberPipe,
     UserDetailComponent,
     UserFormComponent,
-    UserListComponent
+    UserListComponent,
+    LoginComponent
   ],
   imports: [
     AppRoutingModule,
@@ -53,7 +57,8 @@ import { TooltipModule } from 'primeng/tooltip';
     MessagesModule,
     ConfirmDialogModule,
     ToastModule,
-    TooltipModule
+    TooltipModule,
+    SplitterModule
   ],
   exports: [ 
     AppComponent,
@@ -61,7 +66,8 @@ import { TooltipModule } from 'primeng/tooltip';
   providers: [ 
     UserService,
     MessageService,
-    ConfirmationService
+    ConfirmationService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [
     AppComponent,

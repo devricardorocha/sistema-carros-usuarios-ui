@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
 
 const API_USERS = '/api/users';
+const API_ME = '/api/me';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,9 @@ export class UserService {
 
   delete(id: number): any {
     return this.http.delete(`${API_USERS}/${id}`, this.httpOptions);
+  }
+
+  me(): Observable<User> {
+    return this.http.get(API_ME, this.httpOptions);
   }
 }

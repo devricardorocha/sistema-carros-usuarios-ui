@@ -1,31 +1,6 @@
 <p-panel>
-  <ng-template pTemplate="header">
+  <ng-template pTemplate="header" class="p-panel-header">
     <h1>Sistema de gestão de Carros e Usuários</h1>
   </ng-template>
-  <ng-template pTemplate>
-    <div>
-      <h2>Lista de Usuários</h2>
-      <p-table [value]="users" class="p-datatable-striped" selectionMode="single"
-        (onRowSelect)="onSelectUser($event.data)">
-        <ng-template pTemplate="header">
-          <tr>
-            <th>Nome</th>
-            <th>Sobrenome</th>
-            <th>Data de Nascimento</th>
-            <th>Email</th>
-            <th>Telefone</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-user>
-          <tr [pSelectableRow]="user">
-            <td>{{ user.firstName }}</td>
-            <td>{{ user.lastName }}</td>
-            <td>{{ user.birthday }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.phone | phoneNumber }}</td>
-          </tr>
-        </ng-template>
-      </p-table>
-    </div>
-  </ng-template>
+  <router-outlet></router-outlet>
 </p-panel>

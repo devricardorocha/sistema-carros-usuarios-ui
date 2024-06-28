@@ -1,0 +1,26 @@
+<div>
+    <p-card styleClass="login-form" class="flex justify-content-center">
+      <h2>Login</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="doLogin()" novalidate>
+        <div class="field">
+          <input type="text" pInputText placeholder="Login" formControlName="login" />
+          <small class="p-error block" *ngIf="
+                loginForm.get('login')?.invalid && loginForm.get('login')?.dirty
+            ">
+            Login é obrigatório</small>
+        </div>
+        <div class="field">
+          <input type="password" pInputText placeholder="Senha" formControlName="password" />
+          <small class="p-error block" *ngIf="
+                loginForm.get('password')?.invalid && loginForm.get('password')?.dirty
+            ">
+            Senha é obrigatória</small>
+        </div>
+        <p-messages />
+        <div class="login-submit flex">
+          <button pButton type="submit" label="Login" [disabled]="loginForm.invalid"></button>
+          <button pButton severity="danger" (click)="back()" label="Cancelar"></button>
+        </div>
+      </form>
+    </p-card>
+  </div>

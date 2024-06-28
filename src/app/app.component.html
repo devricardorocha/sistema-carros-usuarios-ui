@@ -1,0 +1,9 @@
+<p-panel>
+  <ng-template pTemplate="header" class="p-panel-header">
+    <div class="header-content">
+      <h1 (click)="goHome()" style="cursor: pointer;">Sistema de gestão de Carros e Usuários</h1>
+      <a class="logout-link" (click)="logout()">Logout</a>
+    </div>
+  </ng-template>
+  <router-outlet></router-outlet>
+</p-panel>

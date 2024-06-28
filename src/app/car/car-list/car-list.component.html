@@ -1,0 +1,78 @@
+<div class="p-panel-content p-mt-4 p-shadow-2">
+    <p-toast />
+    <p-toolbar styleClass="mb-4 gap-2">
+        <ng-template pTemplate="right">
+            <p-button pRipple severity="success" label="Novo carro" icon="pi pi-plus" (click)="openNew()"
+                class="mr-2" />
+        </ng-template>
+    </p-toolbar>
+    <p-table [value]="cars" class="p-datatable-striped" selectionMode="single">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Modelo</th>
+                <th>Ano</th>
+                <th>Placa</th>
+                <th>Cor</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-car>
+            <tr [pSelectableRow]="car">
+                <td>{{ car.model }}</td>
+                <td>{{ car.year }}</td>
+                <td>{{ car.licensePlate }}</td>
+                <td>{{ car.color }}</td>
+                <td><i pTooltip="Remover" class="pi pi-trash" (click)="deleteCarAfterConfirmation(car.id)"></i></td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="5" class="text-center">Não há carros cadastrados</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+    <p-dialog [(visible)]="carDialog" [style]="{ width: '450px' }" header="Adicionar novo carro" [modal]="true"
+        styleClass="p-fluid car-form">
+
+        <ng-template pTemplate="content">
+            <form [formGroup]="carForm" (ngSubmit)="addNewCar()" novalidate>
+                <div class="field">
+                    <label for="model">Modelo</label>
+                    <input type="text" pInputText id="model" formControlName="model" />
+                    <small class="p-error" *ngIf="carForm.get('model')?.invalid && carForm.get('model')?.dirty">
+                        Modelo é obrigatório
+                    </small>
+                </div>
+                <div class="field">
+                    <label for="model">Ano</label>
+                    <p-inputNumber id="color" inputId="year" [min]="1990" [max]="2024" formControlName="year"
+                        [useGrouping]="false" />
+                    <small class="p-error" *ngIf="carForm.get('year')?.invalid && carForm.get('year')?.dirty">
+                        Ano é obrigatório
+                    </small>
+                </div>
+                <div class="field">
+                    <label for="licensePlate">Placa</label>
+                    <input type="text" pInputText id="licensePlate" formControlName="licensePlate" />
+                    <small class="p-error"
+                        *ngIf="carForm.get('licensePlate')?.invalid && carForm.get('licensePlate')?.dirty">
+                        Placa é obrigatório
+                    </small>
+                </div>
+                <div class="field">
+                    <label for="color">Cor</label>
+                    <input type="text" pInputText id="color" formControlName="color" />
+                    <small class="p-error" *ngIf="carForm.get('color')?.invalid && carForm.get('color')?.dirty">
+                        Cor é obrigatório
+                    </small>
+                </div>
+
+                <div class="car-submit flex">
+                    <button pButton type="submit" label="Salvar" [disabled]="carForm.invalid"></button>
+                </div>
+            </form>
+        </ng-template>
+    </p-dialog>
+    <p-confirmDialog />
+</div>

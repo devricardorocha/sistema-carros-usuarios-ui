@@ -1,0 +1,18 @@
+:host>>>.login-form {
+    width: 60%;
+    margin: 0 20% 0 20%;
+    justify-self: center;
+}
+
+:host>>>.p-inputtext {
+    width: 100%;
+}
+
+.field {
+    margin-top: 15px;
+}
+
+.login-submit button {
+    margin-top: 10px;
+    margin-right: 10px;
+}

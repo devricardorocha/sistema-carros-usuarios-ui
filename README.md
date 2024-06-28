@@ -1,27 +1,61 @@
-# App
+# Sistema de gestão de Carros e Usuários API v1.0.0
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.5.
+UI de sistema para gerenciar o registro de usuários e carros.
 
-## Development server
+---
+### Ferramentas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+*  [npm](https://www.npmjs.com/)
+*  [Angular](https://angular.dev/)
+*  [TypeScript](https://www.typescriptlang.org/)
+*  [RxJS](https://rxjs-dev.firebaseapp.com/)
+*  [PrimeNG](https://primeng.org/)
+*  [Moment.js](https://momentjs.com/)
+---
 
-## Code scaffolding
+Acesse o repositório do backend do projeto no [link](https://github.com/devricardorocha/sistema-carros-usuarios).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Configuração do ambiente
 
-## Build
+Siga as instruções para configurar o ambiente de desenvolvimento.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+#### Instalar dependencias
 
-## Running unit tests
+  Execute o comando abaixo para instalar as dependencias do projeto.
+  ```
+  npm install
+  ``` 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### Configuração de servidor
 
-## Running end-to-end tests
+  Antes de executar o projeto, certifique-se de que a API esteja sendo disponível e acessível. No arquivo `proxy.config.json`, altere o atributo `target` com o endereço do servidor da API. No nosso caso, o link para a API é https://sistema-carros-usuarios-36f7a5a2f523.herokuapp.com.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+  ```
+  {
+    "/api": {
+        "target": "http://localhost:8080",
+        "secure": false,
+        "logLevel": "debug"
+    }
+  }
+  ```
+#### Executar servidor
 
-## Further help
+  Na raiz do projeto, execute o comando:
+  ```
+  npm run start
+  ```
+  Após a execução do comando, a aplicação estará disponivel em http://localhost:4200.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+#### Gerar build
+
+  Na raiz do projeto, execute o comando:
+  ```
+  npm run build
+  ```
+
+  ## Desenvolvedor
+  
+   **Ricardo de Lima Rocha**
+  *  [Linkedin](https://www.linkedin.com/in/ricardo-de-lima-rocha/)
+  *  [GitHub](https://github.com/devricardorocha)

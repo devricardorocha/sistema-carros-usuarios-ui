@@ -13,7 +13,17 @@ UI de sistema para gerenciar o registro de usuários e carros.
 *  [Moment.js](https://momentjs.com/)
 ---
 
-Acesse o repositório do backend do projeto no [link](https://github.com/devricardorocha/sistema-carros-usuarios).
+### Heroku
+Acesse o projeto publicado no Heroku pelo [link](https://github.com/devricardorocha/sistema-carros-usuarios).
+
+```
+login: alice_silva
+password: senha123
+```
+
+### API
+Acesse o repositório da API backend do projeto no [link](https://github.com/devricardorocha/sistema-carros-usuarios).
+
 
 ### Configuração do ambiente
 

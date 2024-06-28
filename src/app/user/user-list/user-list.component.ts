@@ -32,7 +32,7 @@ export class UserListComponent implements OnInit {
   }
 
   addNewUser() {
-    this.router.navigate(['/users/new']);
+    this.router.navigate(['/app/users/new']);
   }
 
   delete(userId: number) {
@@ -60,7 +60,7 @@ export class UserListComponent implements OnInit {
   }
 
   goToUserArea() {
-    this.router.navigate(['users/me']);
+    this.router.navigate(['app/users/me']);
   }
 
 }

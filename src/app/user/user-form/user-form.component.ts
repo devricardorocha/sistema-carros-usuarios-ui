@@ -124,7 +124,7 @@ export class UserFormComponent implements OnInit {
   }
 
   redirectAfterAWhile() {
-    this.executeActionAfterAWhile(() => this.router.navigate(['/users']))
+    this.executeActionAfterAWhile(() => this.router.navigate(['/app/users']))
   }
 
   executeActionAfterAWhile(action: Function) {

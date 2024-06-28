@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { Location } from '@angular/common';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   loginFormGroup = {
     login: new FormControl('', {
@@ -42,9 +42,6 @@ export class LoginComponent implements OnInit {
     private messageService: MessageService
   ) { }
 
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
 
   doLogin(): any {
     return this.authService.login(this.loginForm.value).subscribe(() => {

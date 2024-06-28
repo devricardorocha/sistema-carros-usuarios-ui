@@ -7,8 +7,7 @@
             class="p-mb-3 btn-user p-button-success"></button>
         <h2 class="w-full">Lista de Usuários</h2>
     </div>
-    <p-table [value]="users" class="p-datatable-striped" selectionMode="single"
-        (onRowSelect)="selectUser($event.data)">
+    <p-table [value]="users" class="p-datatable-striped" selectionMode="single">
         <ng-template pTemplate="header">
             <tr>
                 <th>Nome completo</th>
@@ -21,7 +20,7 @@
         <ng-template pTemplate="body" let-user>
             <tr [pSelectableRow]="user">
                 <td>{{ user | fullName }}</td>
-                <td>{{ user.birthday }}</td>
+                <td>{{ user.birthday | date: 'dd/MM/yyyy'}}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.phone | phoneNumber }}</td>
                 <td><i pTooltip="Remover" (click)="deleteUserAfterConfirmation(user.id)" class="pi pi-trash"></i></td>

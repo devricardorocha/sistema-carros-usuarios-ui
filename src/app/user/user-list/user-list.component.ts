@@ -12,7 +12,6 @@ import { User } from '../../models/user.model';
 export class UserListComponent implements OnInit {
 
   users: User[] = [];
-  selectedUser: User = {};
 
   constructor(
     private router: Router,
@@ -28,17 +27,8 @@ export class UserListComponent implements OnInit {
   getAllUsers() {
     this.users = [];
     this.userService.getUsers().subscribe(response => {
-      this.users = response.map(user => ({
-        ...user, birthday: new Date(user.birthday!).toLocaleDateString('pt-BR')
-      }));
-
-      if (this.users && this.users.length > 0)
-        this.selectedUser = this.users[0];
+      this.users = response;
     })
-  }
-
-  selectUser(user: any): void {
-    this.selectedUser = user;
   }
 
   addNewUser() {

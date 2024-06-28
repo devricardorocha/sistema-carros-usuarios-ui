@@ -11,16 +11,3 @@
 label {
     font-weight: bold;
 }
-
-.card-container {
-    display: flex;
-    gap: 16px;
-  }
-  
-  .fixed-width-card {
-    width: 360px;
-  }
-  
-  .flexible-width-card {
-    flex: 1;
-  }

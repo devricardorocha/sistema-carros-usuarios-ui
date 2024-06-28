@@ -28,6 +28,10 @@ import { TooltipModule } from 'primeng/tooltip';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { LoginComponent } from './auth/login/login.component';
 import { SplitterModule } from 'primeng/splitter';
+import { CarListComponent } from './car/car-list/car-list.component';
+import { ToolbarModule } from 'primeng/toolbar';
+import { DialogModule } from 'primeng/dialog';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,8 @@ import { SplitterModule } from 'primeng/splitter';
     UserDetailComponent,
     UserFormComponent,
     UserListComponent,
-    LoginComponent
+    LoginComponent,
+    CarListComponent
   ],
   imports: [
     AppRoutingModule,
@@ -58,7 +63,10 @@ import { SplitterModule } from 'primeng/splitter';
     ConfirmDialogModule,
     ToastModule,
     TooltipModule,
-    SplitterModule
+    SplitterModule,
+    ToolbarModule,
+    DialogModule,
+    InputNumberModule
   ],
   exports: [ 
     AppComponent,

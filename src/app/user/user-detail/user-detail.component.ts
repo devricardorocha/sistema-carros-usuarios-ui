@@ -5,7 +5,7 @@ import { UserService } from '../user.service';
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.css'],
+  styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
 
@@ -18,14 +18,8 @@ export class UserDetailComponent implements OnInit {
   ngOnInit(): void {
     if (!this.user) {
       this.userService.me().subscribe(response => {
-        this.user = {
-          ...response,
-          birthday: new Date(response.birthday!).toLocaleDateString('pt-BR')
-        };
+        this.user = response;
       })
     }
   }
-
-
-
 }

@@ -14,7 +14,7 @@ UI de sistema para gerenciar o registro de usuários e carros.
 ---
 
 ### Heroku
-Acesse o projeto publicado no Heroku pelo [link](https://github.com/devricardorocha/sistema-carros-usuarios).
+Acesse o projeto publicado no Heroku pelo [link](https://sistema-carros-usuarios-ui-ad1b5a295b14.herokuapp.com/app).
 
 ```
 login: alice_silva

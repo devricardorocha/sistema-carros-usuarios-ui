@@ -65,7 +65,7 @@ export class LoginComponent {
   }
 
   redirectAfterAWhile() {
-    this.executeActionAfterAWhile(() => this.router.navigate(['/users/me']))
+    this.executeActionAfterAWhile(() => this.router.navigate(['/app/users/me']))
   }
 
   executeActionAfterAWhile(action: Function) {

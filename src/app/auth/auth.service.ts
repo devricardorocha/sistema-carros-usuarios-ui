@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -13,6 +13,13 @@ const API_LOGIN = 'api/signin';
 export class AuthService {
   private tokenSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
 
+  httpOptions = {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json;charset=utf-8',
+        'Accept': 'application/json;charset=utf-8'
+      })
+  };
+
   constructor(
     private http: HttpClient,
     private router: Router
@@ -24,7 +31,7 @@ export class AuthService {
   }
 
   login(credentials: AuthCredentials): Observable<any> {
-    return this.http.post<any>(API_LOGIN, credentials).pipe(
+    return this.http.post<any>(API_LOGIN, credentials, this.httpOptions).pipe(
       tap(response => {
         localStorage.setItem('jwtToken', response.token);
         this.tokenSubject.next(response.token);
@@ -35,7 +42,7 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('jwtToken');
     this.tokenSubject.next(null);
-    this.router.navigate(['/login']);
+    this.router.navigate(['/app/login']);
   }
 
   get token(): string | null {

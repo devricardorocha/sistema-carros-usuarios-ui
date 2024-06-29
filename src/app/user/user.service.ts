@@ -12,7 +12,10 @@ const API_ME = '/api/me';
 export class UserService {
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json;charset=utf-8',
+        'Accept': 'application/json;charset=utf-8'
+      })
   };
 
   constructor(private http: HttpClient) {}

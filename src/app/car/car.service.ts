@@ -11,7 +11,10 @@ const API_CARS = '/api/cars';
 export class CarService {
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json;charset=utf-8',
+        'Accept': 'application/json;charset=utf-8'
+      })
   };
 
   constructor(private http: HttpClient) { }

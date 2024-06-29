@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
   }
 
   goHome() {
-    this.router.navigate(['']);
+    this.router.navigate(['/app']);
   }
 
   logout() {

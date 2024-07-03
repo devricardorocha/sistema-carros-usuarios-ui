@@ -1,27 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './auth/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
-  authenticated: boolean = false;
+  isAuthenticated: boolean | null = false;
+  isAuthenticatedSubscription: Subscription = new Subscription();
 
   constructor(
     private router: Router,
     private authService: AuthService
   ){}
-
+  
   ngOnInit(): void {
-    this.isUserAuthenticated();
+    this.isAuthenticatedSubscription = this.authService.observableIsAuthenticated()
+    .subscribe((isAuthenticated) => {
+      this.isAuthenticated = isAuthenticated;
+      console.log('isAuthenticated', isAuthenticated);
+    });
   }
 
-  isUserAuthenticated() {
-    this.authenticated = this.authService.isAuthenticated();
+  ngOnDestroy(): void {
+    this.isAuthenticatedSubscription.unsubscribe();
   }
 
   goHome() {
@@ -30,7 +36,6 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.authService.logout();
-    this.isUserAuthenticated();
     this.goHome();
   }
 

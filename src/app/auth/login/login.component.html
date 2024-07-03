@@ -19,7 +19,7 @@
         <p-messages />
         <div class="login-submit flex">
           <button pButton type="submit" label="Login" [disabled]="loginForm.invalid"></button>
-          <button pButton severity="danger" (click)="back()" label="Cancelar"></button>
+          <button pButton type="reset" severity="danger" (click)="back()" label="Cancelar"></button>
         </div>
       </form>
     </p-card>

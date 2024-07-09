@@ -98,6 +98,10 @@ export class UserFormComponent implements OnInit {
     });
   }
 
+  logIt(event: any) {
+    console.log(this.userFormGroup.firstName);
+  }
+
   createUser(): any {
     const userToPost = {
       birthday: moment(this.userForm.get('birthday')?.value).format('yy-mm-dd'),

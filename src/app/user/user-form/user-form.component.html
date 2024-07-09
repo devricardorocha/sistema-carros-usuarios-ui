@@ -3,18 +3,26 @@
       <h2>Novo usuário</h2>
       <form [formGroup]="userForm" (ngSubmit)="createUser()" novalidate>
         <div class="field">
-          <input type="text" pInputText placeholder="Nome" formControlName="firstName" />
+          <input type="text" pInputText placeholder="Nome" formControlName="firstName" (keyup)="logIt($event)" />
           <small class="p-error block" *ngIf="
-              userForm.get('firstName')?.invalid && userForm.get('firstName')?.dirty
+              userForm.get('firstName')?.touched && userForm.get('firstName')?.errors?.required
             ">
             Nome é obrigatório</small>
+          <small class="p-error block" *ngIf="
+              !userForm.get('firstName')?.pristine && userForm.get('firstName')?.errors?.maxlength
+            ">
+            O nome deve ter até 255 caracteres</small>
         </div>
         <div class="field">
           <input type="text" pInputText placeholder="Sobrenome" formControlName="lastName" />
           <small class="p-error block" *ngIf="
-              userForm.get('lastName')?.invalid && userForm.get('lastName')?.dirty
+            userForm.get('lastName')?.touched && userForm.get('lastName')?.errors?.required
             ">
             Sobrenome é obrigatório</small>
+          <small class="p-error block" *ngIf="
+            !userForm.get('lastName')?.pristine && userForm.get('lastName')?.errors?.maxlength
+            ">
+          O nome deve ter até 255 caracteres</small>
         </div>
         <div class="field">
           <p-calendar [(ngModel)]="birthday" formControlName="birthday" dateFormat="dd/mm/yy" [showIcon]="true" inputId="icondisplay" [maxDate]="maxDate" placeholder="Data de nascimento" />

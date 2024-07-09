@@ -2,8 +2,10 @@
     <p-card styleClass="user-form" class="flex justify-content-center">
       <h2>Novo usuário</h2>
       <form [formGroup]="userForm" (ngSubmit)="createUser()" novalidate>
+        
+        <!-- NOME -->
         <div class="field">
-          <input type="text" pInputText placeholder="Nome" formControlName="firstName" (keyup)="logIt($event)" />
+          <input type="text" pInputText placeholder="Nome" formControlName="firstName" />
           <small class="p-error block" *ngIf="
               userForm.get('firstName')?.touched && userForm.get('firstName')?.errors?.required
             ">
@@ -11,8 +13,10 @@
           <small class="p-error block" *ngIf="
               !userForm.get('firstName')?.pristine && userForm.get('firstName')?.errors?.maxlength
             ">
-            O nome deve ter até 255 caracteres</small>
+            Nome deve ter até 255 caracteres</small>
         </div>
+
+        <!-- SOBRENOME -->
         <div class="field">
           <input type="text" pInputText placeholder="Sobrenome" formControlName="lastName" />
           <small class="p-error block" *ngIf="
@@ -20,10 +24,12 @@
             ">
             Sobrenome é obrigatório</small>
           <small class="p-error block" *ngIf="
-            !userForm.get('lastName')?.pristine && userForm.get('lastName')?.errors?.maxlength
+            userForm.get('lastName')?.touched && userForm.get('lastName')?.errors?.maxlength
             ">
-          O nome deve ter até 255 caracteres</small>
+            Sobrenome deve ter até 255 caracteres</small>
         </div>
+
+        <!-- DATA DE NASCIMENTO -->
         <div class="field">
           <p-calendar [(ngModel)]="birthday" formControlName="birthday" dateFormat="dd/mm/yy" [showIcon]="true" inputId="icondisplay" [maxDate]="maxDate" placeholder="Data de nascimento" />
           <small class="p-error block" *ngIf="
@@ -31,34 +37,67 @@
             ">
             Data de nascimento é obrigatória</small>
         </div>
+
+        <!-- EMAIL -->
         <div class="field">
           <input type="email" pInputText placeholder="Email" formControlName="email" />
           <small class="p-error block" *ngIf="
-              userForm.get('email')?.invalid && userForm.get('email')?.dirty
+              userForm.get('email')?.touched && userForm.get('email')?.errors?.required
             ">
             Email é obrigatório</small>
+          <small class="p-error block" *ngIf="
+              userForm.get('email')?.touched && userForm.get('email')?.errors?.maxlength
+            ">
+            Email deve ter até 255 caracteres</small>
+          <small class="p-error block" *ngIf="
+            userForm.get('email')?.touched && userForm.get('email')?.errors?.email
+            ">
+            Email deve ter o formato nome&#64;email</small>
         </div>
+
+        <!-- LOGIN -->
         <div class="field">
           <input type="text" pInputText placeholder="Login" formControlName="login" />
           <small class="p-error block" *ngIf="
-              userForm.get('login')?.invalid && userForm.get('login')?.dirty
+              userForm.get('login')?.touched && userForm.get('login')?.errors?.required
             ">
             Login é obrigatório</small>
+          <small class="p-error block" *ngIf="
+              userForm.get('login')?.touched && userForm.get('login')?.errors?.maxlength
+            ">
+            Login deve ter até 255 caracteres</small>
         </div>
+
+        <!-- TELEFONE -->
         <div class="field">
           <input type="text" pInputText placeholder="DDD + 9 ou 8 dígitos" formControlName="phone" />
           <small class="p-error block" *ngIf="
-              userForm.get('phone')?.invalid && userForm.get('phone')?.dirty
+              userForm.get('phone')?.touched && userForm.get('phone')?.errors?.required
             ">
             Telefone é obrigatório</small>
+          <small class="p-error block" *ngIf="
+              userForm.get('phone')?.touched && (userForm.get('phone')?.errors?.minlength || userForm.get('phone')?.errors?.maxlength)
+            ">
+            Telefone deve ter de 10 à 11 caracteres</small>
+          <small class="p-error block" *ngIf="
+              userForm.get('phone')?.touched && userForm.get('phone')?.errors?.pattern
+            ">
+            Telefone deve ter o formato DDD + 9 ou 8 dígitos sem espaço</small>
         </div>
+
+        <!-- SENHA -->
         <div class="field">
           <input type="password" pInputText placeholder="Digite de 6 à 10 dígitos (letras e números)" formControlName="password" />
           <small class="p-error block" *ngIf="
-              userForm.get('password')?.invalid && userForm.get('password')?.dirty
+              userForm.get('password')?.touched && userForm.get('password')?.errors?.required
             ">
             Senha é obrigatória</small>
+          <small class="p-error block" *ngIf="
+              userForm.get('password')?.touched && (userForm.get('password')?.errors?.minlength || userForm.get('password')?.errors?.maxlength)
+            ">
+            Senha deve ter de 6 à 10 caracteres</small>
         </div>
+
         <p-messages />
         <div class="form-submit flex">
           <button pButton type="submit" label="Salvar" [disabled]="userForm.invalid"></button>
